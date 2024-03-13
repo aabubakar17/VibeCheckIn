@@ -17,7 +17,7 @@ describe("server", () => {
   });
 
   describe("/api/accommodations", () => {
-    test("responds with a 200", () => {
+    test("responds with a 200 status code", () => {
       return request(app).get("/api/accommodations").expect(200);
     });
 
