@@ -73,6 +73,7 @@ const fetchAccommodationReviews = async (accommodationId) => {
 
   try {
     const response = await axios.request(options);
+    return response.data;
     console.log(response.data);
   } catch (error) {
     console.error(error);
