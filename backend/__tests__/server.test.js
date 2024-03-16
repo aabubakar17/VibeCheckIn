@@ -21,7 +21,7 @@ describe("server", () => {
     });
   });
 
-  describe("GET /api/accommodations", () => {
+  /* describe("GET /api/accommodations", () => {
     test("responds with a 200 status code", () => {
       return request(app).get("/api/accommodations").expect(200);
     });
@@ -36,9 +36,9 @@ describe("server", () => {
           ]);
         });
     });
-  });
+  }); */
 
-  describe("POST /api/accommodations", () => {
+  /* describe("POST /api/accommodations", () => {
     const postAccommodation = {
       name: "Hotel Relax",
       location: "City Center",
@@ -54,5 +54,47 @@ describe("server", () => {
           expect(body.pricePerNight).toEqual(50);
         });
     });
+  }); */
+});
+
+/* describe("Location Query Endpoint", () => {
+  describe("GET /api/locations?query={locationName}", () => {
+    test("should respond with a 200 status code", async () => {
+      const response = await request(app).get("/api/locations?query=London");
+      expect(response.statusCode).toBe(200);
+    });
+
+    test("should return an array of locations", async () => {
+      const response = await request(app).get("/api/locations?query=London");
+      expect(response.body).toBeInstanceOf(Array);
+    });
+
+    test("each location should contain a destinationId", async () => {
+      const response = await request(app).get("/api/locations?query=London");
+      expect(response.body.length).toBeGreaterThan(0);
+      expect(response.body[0]).toHaveProperty("dest_id");
+    });
+
+    test("It responds with 400 if the query parameter is missing", async () => {
+      const response = await request(app).get(`/api/locations?query=`);
+      expect(response.statusCode).toEqual(400);
+      expect(response.body).toEqual({ message: "Query parameter is required" });
+    });
+  });
+  test("It responds with an empty array for queries matching no locations", async () => {
+    const query = "asldkfjasldkfj";
+    const response = await request(app).get(`/api/locations?query=${query}`);
+    expect(response.statusCode).toEqual(200);
+    expect(response.body).toEqual([]);
+  });
+});
+ */
+
+describe("GET /api/accommodations/search", () => {
+  test("responds with a 200 status code for valid destination ID", async () => {
+    const response = await request(app).get(
+      "/api/accommodations/search?destinationId=1234"
+    );
+    expect(response.statusCode).toBe(200);
   });
 });

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/aabubakar17/VibeCheckIn#readme",
   "dependencies": {
+    "axios": "^1.6.8",
     "express": "^4.18.3",
     "mongoose": "^8.2.1"
   },
