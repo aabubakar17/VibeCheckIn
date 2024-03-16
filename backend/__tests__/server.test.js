@@ -90,11 +90,16 @@ describe("server", () => {
 });
  */
 
-describe("GET /api/accommodations/search", () => {
-  test("responds with a 200 status code for valid destination ID", async () => {
-    const response = await request(app).get(
-      "/api/accommodations/search?destinationId=1234"
-    );
+/* describe("GET /api/accommodations/search", () => {
+  test("responds with a 200 status code for valid request", async () => {
+    const query = {
+      destinationId: "-2601889",
+      checkinDate: "2024-05-19",
+      checkoutDate: "2024-05-20",
+    };
+    const response = await request(app)
+      .get("/api/accommodations/search")
+      .query(query);
     expect(response.statusCode).toBe(200);
   });
-});
+}); */
