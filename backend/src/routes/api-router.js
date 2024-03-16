@@ -1,5 +1,9 @@
 const apiRouter = require("express").Router();
-const { queryLocation, searchAccommodations } = require("../utils/bookingApi");
+const {
+  queryLocation,
+  searchAccommodation,
+  fetchAccommodationReviews,
+} = require("../utils/bookingApi");
 const accommodations = [
   { id: 1, name: "Hotel Relax", location: "City Center" },
   { id: 2, name: "Mountain Retreat", location: "Highlands" },
@@ -60,6 +64,18 @@ apiRouter.get("/accommodations/search", async (req, res) => {
     console.log(accommodations);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch accommodations" });
+  }
+});
+
+apiRouter.get("/accommodations/:id/reviews", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const reviews = await fetchAccommodationReviews(id);
+    res.json(reviews);
+    console.log(reviews);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch reveiws" });
   }
 });
 

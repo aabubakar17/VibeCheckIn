@@ -103,3 +103,13 @@ describe("server", () => {
     expect(response.statusCode).toBe(200);
   });
 }); */
+
+/* describe("GET /api/accommodations/:id/reviews", () => {
+  test("responds with a 200 status code for valid accommodation ID", async () => {
+    const accommodationId = "590840";
+    const response = await request(app).get(
+      `/api/accommodations/${accommodationId}/reviews`
+    );
+    expect(response.statusCode).toBe(200);
+  });
+}); */

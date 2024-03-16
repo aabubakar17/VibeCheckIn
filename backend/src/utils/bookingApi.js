@@ -54,4 +54,32 @@ const searchAccommodations = async (destID, checkinDate, checkoutDate) => {
     console.error(error);
   }
 };
-module.exports = { queryLocation, searchAccommodations };
+
+const fetchAccommodationReviews = async (accommodationId) => {
+  const options = {
+    method: "GET",
+    url: "https://booking-com.p.rapidapi.com/v1/hotels/reviews",
+    params: {
+      sort_type: "SORT_MOST_RELEVANT",
+      locale: "en-gb",
+      hotel_id: accommodationId,
+      language_filter: "en-gb",
+    },
+    headers: {
+      "x-rapidapi-host": process.env.BOOKING_API_HOST,
+      "x-rapidapi-key": process.env.RAPIDAPI_KEY,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+module.exports = {
+  queryLocation,
+  searchAccommodations,
+  fetchAccommodationReviews,
+};
